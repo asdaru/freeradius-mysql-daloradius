@@ -50,7 +50,10 @@ fi
 
 #======== DELETE INIT CODE ==
 echo "#!/bin/bash
-(while :; do; mysqld_safe >/dev/null; done) & 
+(while :
+do
+  mysqld_safe >/dev/null
+done) & 
 php-fpm7.0 & 
 nginx & 
 /usr/sbin/freeradius -X" > /init.sh
