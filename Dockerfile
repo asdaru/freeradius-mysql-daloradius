@@ -32,8 +32,6 @@ COPY init.sh /
 COPY etc/nginx/radius.conf /etc/nginx/sites-enabled/
 		
 
-
-RUN chmod +x /init.sh 		
 	
 EXPOSE 1812 1813 80
 
