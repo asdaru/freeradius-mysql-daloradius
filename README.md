@@ -19,7 +19,7 @@ By default was set unlimited access 0.0.0.0/0
 ## For mysql database you can use docker to
 ```
 docker run --name db -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
-docker run --name freeradius -d -p 1812:1812/udp -p 1813:1813/udp -p 80:80 -e CLIENT_SECRET=<Radius secret> -e CLIENT_NET=<client net> --link db:db RADIUS_DB_SERVER=db -e RADIUS_DB_USER=root> -e RADIUS_DB_PWD=my-secret-pw  asdaru/freeradius-mysql-daloradius
+docker run --name freeradius -d -p 1812:1812/udp -p 1813:1813/udp -p 80:80 -e CLIENT_SECRET=<Radius secret> -e CLIENT_NET=<client net> --link db:db RADIUS_DB_SERVER=db -e RADIUS_DB_USER=root> -e RADIUS_DB_PWD=my-secret-pw  asdaru/freeradius-mysql-daloradius:nomysql
 ```
 
 
