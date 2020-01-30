@@ -29,11 +29,13 @@ RUN wget https://github.com/lirantal/daloradius/archive/master.zip && \
 #	cp -R /var/www/daloradius/contrib/chilli/portal2/hotspotlogin /var/www/daloradius
 
 COPY init.sh /	
+COPY run.sh /	
+RUN chmod +x /init.sh && chmod +x /run.sh
 COPY etc/nginx/radius.conf /etc/nginx/sites-enabled/
 		
 
 	
 EXPOSE 1812 1813 80
 
-ENTRYPOINT ["/init.sh"]
+ENTRYPOINT ["/run.sh"]
 

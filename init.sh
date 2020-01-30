@@ -47,22 +47,4 @@ echo "client $CLIENT_NET {
 }" >> /etc/freeradius/clients.conf
 fi 
 
-
-#======== DELETE INIT CODE ==
-echo "#!/bin/bash
-(while :
-do
-  mysqld_safe >/dev/null
-done) & 
-php-fpm7.0 & 
-nginx & 
-/usr/sbin/freeradius -X" > /init.sh
-
-
-mkdir /run/php & \
-mysqld_safe >/dev/null & \
-php-fpm7.0 & \
-nginx & \
-/usr/sbin/freeradius -X
-
-echo "Inited and STERTED"
+mkdir /run/php
