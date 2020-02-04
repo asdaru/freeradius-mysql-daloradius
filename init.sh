@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 5
 
 MYSQL="mysql -u$RADIUS_DB_USER -p$RADIUS_DB_PWD -h $RADIUS_DB_SERVER --port $RADIUS_DB_SERVER_PORT" 
 echo $MYSQL
@@ -11,11 +12,12 @@ $MYSQL $RADIUS_DB_NAME  < /etc/freeradius/sql/mysql/nas.sql
 $MYSQL $RADIUS_DB_NAME  < /var/www/daloradius/contrib/db/mysql-daloradius.sql
 
 
-sed -i 's/server = "localhost"/server = "'$RADIUS_DB_SERVER'"/' /etc/freeradius/sql.conf
-sed -i 's/#port = 3306/port = '$RADIUS_DB_SERVER_PORT'/' /etc/freeradius/sql.conf
-sed -i 's/login = "radius"/login = "'$RADIUS_DB_USER'"/' /etc/freeradius/sql.conf
-sed -i 's/password = "radpass"/password = "'$RADIUS_DB_PWD'"/' /etc/freeradius/sql.conf
-sed -i 's/radius_db = "radius"/radius_db = "'$RADIUS_DB_NAME'"/' /etc/freeradius/sql.conf
+
+sed -i -e 's/server = "localhost"/server = "'$RADIUS_DB_SERVER'"/g' /etc/freeradius/sql.conf
+sed -i -e 's/#port = 3306/port = '$RADIUS_DB_SERVER_PORT'/g' /etc/freeradius/sql.conf
+sed -i -e 's/login = "radius"/login = "'$RADIUS_DB_USER'"/g' /etc/freeradius/sql.conf
+sed -i -e 's/password = "radpass"/password = "'$RADIUS_DB_PWD'"/g' /etc/freeradius/sql.conf
+sed -i -e 's/radius_db = "radius"/radius_db = "'$RADIUS_DB_NAME'"/g' /etc/freeradius/sql.conf
 sed -i -e 's/$INCLUDE sql.conf/\n$INCLUDE sql.conf/g' /etc/freeradius/radiusd.conf
 sed -i -e 's|$INCLUDE sql/mysql/counter.conf|\n$INCLUDE sql/mysql/counter.conf|g' /etc/freeradius/radiusd.conf
 sed -i -e 's|authorize {|authorize {\nsql|' /etc/freeradius/sites-available/inner-tunnel
