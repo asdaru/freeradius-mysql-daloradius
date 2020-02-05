@@ -43,11 +43,11 @@ echo -e "\nATTRIBUTE Usage-Limit 3000 string\nATTRIBUTE Rate-Limit 3001 string" 
 
 
 #================DALORADIUS=========================
-sed -i "s/$configValues\['CONFIG_DB_PASS'\] = '';/$configValues\['CONFIG_DB_PASS'\] = '"$RADIUS_DB_PWD"';/" /var/www/daloradius/library/daloradius.conf.php
-sed -i "s/$configValues\['CONFIG_DB_USER'\] = 'root';/$configValues\['CONFIG_DB_USER'\] = '"$RADIUS_DB_USER"';/" /var/www/daloradius/library/daloradius.conf.php
-sed -i "s/$configValues\['CONFIG_DB_HOST'\] = 'localhost';/$configValues\['CONFIG_DB_HOST'\] = '"$RADIUS_DB_SERVER"';/" /var/www/daloradius/library/daloradius.conf.php
-sed -i "s/$configValues\['CONFIG_DB_PORT'\] = '3306';/$configValues\['CONFIG_DB_PORT'\] = '"$RADIUS_DB_SERVER_PORT"';/" /var/www/daloradius/library/daloradius.conf.php
-sed -i "s/$configValues\['CONFIG_DB_NAME'\] = 'radius';/$configValues\['CONFIG_DB_NAME'\] = '"$RADIUS_DB_NAME"';/" /var/www/daloradius/library/daloradius.conf.php
+sed -i -e "s/$configValues\['CONFIG_DB_PASS'\] = '';/$configValues\['CONFIG_DB_PASS'\] = '"$RADIUS_DB_PWD"';/" /var/www/daloradius/library/daloradius.conf.php
+sed -i -e "s/$configValues\['CONFIG_DB_USER'\] = 'root';/$configValues\['CONFIG_DB_USER'\] = '"$RADIUS_DB_USER"';/" /var/www/daloradius/library/daloradius.conf.php
+sed -i -e "s/$configValues\['CONFIG_DB_HOST'\] = 'localhost';/$configValues\['CONFIG_DB_HOST'\] = '"$RADIUS_DB_SERVER"';/" /var/www/daloradius/library/daloradius.conf.php
+sed -i -e "s/$configValues\['CONFIG_DB_PORT'\] = '3306';/$configValues\['CONFIG_DB_PORT'\] = '"$RADIUS_DB_SERVER_PORT"';/" /var/www/daloradius/library/daloradius.conf.php
+sed -i -e "s/$configValues\['CONFIG_DB_NAME'\] = 'radius';/$configValues\['CONFIG_DB_NAME'\] = '"$RADIUS_DB_NAME"';/" /var/www/daloradius/library/daloradius.conf.php
 
 
 
